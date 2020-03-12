@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: google
+  datasource:
+    url: jdbc:postgresql://ec2-52-23-14-156.compute-1.amazonaws.com:5432/dfhf7588u0gmab
+    username: snmcqwfimnffuo
+    password: 917351414f3b277a76b7ef87344a1721f764b9b06b6e4b1d585a92a16caf4bed
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+
+# Spring Security configuration
+security:
+  oauth2:
+    client:
+      clientId: 252890713656-6hkd4jl34l4qcm5cn022knbn3quru1be.apps.googleusercontent.com
+      clientSecret: mt8s9jUW9qmFCcOzzRKtj57l
+      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+      clientAuthenticationScheme: form
+      #preEstablishedRedirectUri: http://localhost:8080/_user
+      #useCurrentUri: false
+      scope:
+        - openid
+        - email
+        - profile
+    resource:
+      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+      preferTokenInfo: true
