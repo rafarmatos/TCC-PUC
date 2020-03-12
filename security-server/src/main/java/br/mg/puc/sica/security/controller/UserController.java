@@ -40,13 +40,4 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/token")
-	public ResponseEntity<String> user(HttpServletRequest request) {
-		return ResponseEntity.ok(request.getSession().getId());
-		
-	}	
-
-	
-
-
 }

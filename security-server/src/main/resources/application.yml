@@ -20,8 +20,6 @@ security:
       accessTokenUri: https://www.googleapis.com/oauth2/v4/token
       userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
       clientAuthenticationScheme: form
-      #preEstablishedRedirectUri: http://localhost:8080/_user
-      #useCurrentUri: false
       scope:
         - openid
         - email
