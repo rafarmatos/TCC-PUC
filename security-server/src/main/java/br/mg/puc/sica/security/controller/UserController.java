@@ -1,15 +1,13 @@
 package br.mg.puc.sica.security.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.common.exceptions.UnauthorizedUserException;
-import org.springframework.security.web.firewall.RequestRejectedException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,18 +24,19 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	//http://localhost:8080/google/login
 	@GetMapping
-	public ResponseEntity<?> user(Principal principal) {
+	public ResponseEntity<?> user(@AuthenticationPrincipal OAuth2User principal) {
 		try {
 			return ResponseEntity.ok().body(service.builUser(
 					principal, 
 					request
 				)
 			);
-		}catch (UnauthorizedUserException | RequestRejectedException e) {
+		}catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
 		}
 	}
+	
+	
 	
 }

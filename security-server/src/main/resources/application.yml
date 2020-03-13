@@ -12,18 +12,12 @@ spring:
 
 
 # Spring Security configuration
-security:
-  oauth2:
-    client:
-      clientId: 252890713656-6hkd4jl34l4qcm5cn022knbn3quru1be.apps.googleusercontent.com
-      clientSecret: mt8s9jUW9qmFCcOzzRKtj57l
-      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
-      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
-      clientAuthenticationScheme: form
-      scope:
-        - openid
-        - email
-        - profile
-    resource:
-      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
-      preferTokenInfo: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 252890713656-6hkd4jl34l4qcm5cn022knbn3quru1be.apps.googleusercontent.com
+            client-secret: mt8s9jUW9qmFCcOzzRKtj57l
+     

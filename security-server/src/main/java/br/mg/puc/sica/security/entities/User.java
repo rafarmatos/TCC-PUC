@@ -2,8 +2,6 @@ package br.mg.puc.sica.security.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.security.Principal;
-import java.util.LinkedHashMap;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
 
 @Entity
 @Table(name = "user", schema="security")
@@ -23,14 +22,11 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -4691892066212174511L;
 
 	@Id
-	@Column(name="id")
-	private BigDecimal id;
+	@Column(name = "email")
+	private String email;
 
 	@Column(name = "name")
 	private String name;
-
-	@Column(name = "email")
-	private String email;
 	
 	@Column(name = "picture")
 	private String picture;
@@ -42,32 +38,16 @@ public class User implements Serializable {
 		
 	}
 	
-	public static User of (Principal principal, String jsessionid) { 
-		OAuth2Authentication oauth = (OAuth2Authentication) principal;
-		@SuppressWarnings("unchecked")
-		LinkedHashMap<String, Object> hashMap = (LinkedHashMap<String, Object>) oauth.getUserAuthentication().getDetails();
+	public static User of (OAuth2User principal, String jsessionid) { 
 		User user = new User ();
-		user.setId(new BigDecimal(hashMap.get("sub").toString()));
-		user.setEmail(hashMap.get("email").toString());
-		user.setName(hashMap.get("name").toString());
-		user.setPicture(hashMap.get("picture").toString());
+		user.setEmail((principal.getAttribute("email").toString()));
+		user.setName(principal.getAttribute("name").toString());
+		user.setPicture(principal.getAttribute("picture").toString());
 		user.setJsessionid(jsessionid);
 		return user;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public BigDecimal getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(BigDecimal id) {
-		this.id = id;
-	}
+	
 
 	/**
 	 * @return the name

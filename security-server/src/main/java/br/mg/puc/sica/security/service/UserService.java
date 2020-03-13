@@ -1,12 +1,10 @@
 package br.mg.puc.sica.security.service;
 
-import java.security.Principal;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.common.exceptions.UnauthorizedUserException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.firewall.RequestRejectedException;
 import org.springframework.stereotype.Service;
 
@@ -23,19 +21,18 @@ public class UserService {
 	private final static String JSESSIONID = "JSESSIONID";
 	
 
-	public User builUser (Principal principal, HttpServletRequest request)  throws UnauthorizedUserException, 
-																					RequestRejectedException {
+	public User builUser (OAuth2User principal, HttpServletRequest request)  throws Exception {
 		if (principal == null) {
-			throw new UnauthorizedUserException("The user is null.");			
+			throw new Exception("The user is null.");			
 		}
 		
 		if (!request.isRequestedSessionIdValid()) {
-			throw new RequestRejectedException("The session is invalid.");
+			throw new Exception("The session is invalid.");
 		}
 		
 		
 		User user =  User.of(principal, getJSessionId(request));
-		if (!repository.existsById(user.getId())) {
+		if (!repository.existsById(user.getEmail())) {
 			this.repository.save(user);
 		}
 		
