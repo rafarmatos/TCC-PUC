@@ -1,4 +1,4 @@
-#Entities 
+# Entities 
 
 Projeto responsável por centralizar e compartilhar as entidades utilizados pelo projeto SICA.
 
