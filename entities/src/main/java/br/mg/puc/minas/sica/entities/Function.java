@@ -1,4 +1,4 @@
-package br.mg.puc.minas.sica.entities.security;
+package br.mg.puc.minas.sica.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

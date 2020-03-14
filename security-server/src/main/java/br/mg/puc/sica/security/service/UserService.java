@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.firewall.RequestRejectedException;
 import org.springframework.stereotype.Service;
 
-import br.mg.puc.sica.security.entities.User;
+import br.mg.puc.minas.sica.entities.User;
 import br.mg.puc.sica.security.repository.UserRepository;
 
 @Service
@@ -29,9 +29,14 @@ public class UserService {
 		if (!request.isRequestedSessionIdValid()) {
 			throw new Exception("The session is invalid.");
 		}
+
+		User user =  User.of(
+				principal.getAttribute("email").toString(),
+				principal.getAttribute("name").toString(),
+				principal.getAttribute("picture").toString(),
+				takeJSessionId(request)
+		);
 		
-		
-		User user =  User.of(principal, getJSessionId(request));
 		if (!repository.existsById(user.getEmail())) {
 			this.repository.save(user);
 		}
@@ -40,7 +45,7 @@ public class UserService {
 	}
 	
 	
-	private String getJSessionId( HttpServletRequest request) throws RequestRejectedException {
+	private String takeJSessionId( HttpServletRequest request) throws RequestRejectedException {
 		String cookieValue = null;
 		for (Cookie cookie : request.getCookies()) {
 			if (JSESSIONID.equals(cookie.getName())){

@@ -1,15 +1,12 @@
-package br.mg.puc.sica.security.entities;
+package br.mg.puc.minas.sica.entities;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.springframework.security.oauth2.core.user.OAuth2User;
 
 
 @Entity
@@ -38,11 +35,11 @@ public class User implements Serializable {
 		
 	}
 	
-	public static User of (OAuth2User principal, String jsessionid) { 
+	public static User of (String email, String name, String urlPicture, String jsessionid) { 
 		User user = new User ();
-		user.setEmail((principal.getAttribute("email").toString()));
-		user.setName(principal.getAttribute("name").toString());
-		user.setPicture(principal.getAttribute("picture").toString());
+		user.setEmail(email);
+		user.setName(name);
+		user.setPicture(urlPicture);
 		user.setJsessionid(jsessionid);
 		return user;
 	}
