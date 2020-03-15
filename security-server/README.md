@@ -10,6 +10,8 @@ Projeto responsável por realizar o processo de autenticação de usuário utili
 - Por fim o cliente informa o Access Token ao <b>Resorce Server</b>.
 - O <b>Resource Server</b> faz validação e retorna o conteúdo Protegido.
 
+![Image description](https://www.brunobrito.net.br/content/images/2018/08/roles-2.png)
+
 ## Executando o projeto
 - Faça o download do projeto
 - Faça o download da dependência <a href="https://github.com/skyrafael/TCC-PUC/tree/master/entities">entities</a>
