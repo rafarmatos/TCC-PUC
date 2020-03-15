@@ -23,11 +23,13 @@ mvn clean install
 ```
 
 ## Serviços
-- Para autenticar, realize uma requisição para <a>http://localhost:8080/</a>. 
+- <a>http://localhost:8080/</a>
+Endereço de autenticação do usuário.  
 Será solicita permissão de acesso aos seus dados na conta do Google e posteriormente, a requisação será direcionada para a tela com as credencias do usuário.
 
 
-- Para realizar o processo de logout, realize uma requisição do tipo POST para:
-http://localhost:8080/logout
+- http://localhost:8080/logout 
+Endereço para realizar o processo de logout com requisição do tipo POST
+
 
 
