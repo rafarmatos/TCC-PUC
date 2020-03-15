@@ -1,9 +1,9 @@
-# Servidor para autenticação
+# security-server
 
 Projeto responsável por realizar o processo de autenticação de usuário utilizando oauth2.
 
 ## Como funciona
-Como citado por <a href="https://www.brunobrito.net.br/oauth2/">Bruno Brito</a>, o oauth possui o fluxo abaixo 
+Como citado por <a href="https://www.brunobrito.net.br/oauth2/">Bruno Brito</a>, o oauth possui o seguinte fluxo:
 - O Usuário acessa um cliente/ projeto. Para ter acesso ao conteúdo protegido da api (Resource Server) o cliente solicita Autorização ao <b>Resource Owner.</b>
 - A Autorização é concedida pelo usuário <b>Resource Owner</b>
 - O cliente/ projeto solicita um token de acesso ao <b>Authorization Server</b> através da autenticação de sua própria identidade.
@@ -23,12 +23,12 @@ mvn clean install
 ```
 
 ## Serviços
-- <a>http://localhost:8080/</a>
+- http://localhost:8080 <br />
 Endereço de autenticação do usuário.  
 Será solicita permissão de acesso aos seus dados na conta do Google e posteriormente, a requisação será direcionada para a tela com as credencias do usuário.
 
 
-- http://localhost:8080/logout 
+- http://localhost:8080/logout <br />
 Endereço para realizar o processo de logout com requisição do tipo POST
 
 
