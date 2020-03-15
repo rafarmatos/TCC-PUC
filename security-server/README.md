@@ -3,6 +3,7 @@
 Projeto responsável por realizar o processo de autenticação de usuário utilizando oauth2.
 
 ## Como funciona
+Como citado por <a href="https://www.brunobrito.net.br/oauth2/">Bruno Brito</a>, o oauth possui o fluxo abaixo 
 - O Usuário acessa um cliente/ projeto. Para ter acesso ao conteúdo protegido da api (Resource Server) o cliente solicita Autorização ao <b>Resource Owner.</b>
 - A Autorização é concedida pelo usuário <b>Resource Owner</b>
 - O cliente/ projeto solicita um token de acesso ao <b>Authorization Server</b> através da autenticação de sua própria identidade.
