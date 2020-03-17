@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,8 +14,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import br.mg.puc.minas.sica.entities.RequestUser;
+import br.mg.puc.minas.sica.entities.Function;
+import br.mg.puc.minas.sica.entities.User;
 import br.mg.puc.minas.sica.exception.AuthorizationException;
+import br.mg.puc.minas.sica.repository.FunctionRepository;
 
 @Component
 public class SessionComponent {
@@ -25,17 +26,19 @@ public class SessionComponent {
 
 	private RestTemplate restTemplate;
 
-	@Value("${authorization.url-validate:https://sica-security.herokuapp.com/_authorization}" )
-	private String authorizationValidate;
+	private Function functionValidadeAuthorization;
 	
 	private static final String JSESSIONID = "JSESSIONID=%s";
 
 	@Autowired
-	public SessionComponent(RestTemplate restTemplate, 
-							HttpServletRequest request) {
+	public SessionComponent(FunctionRepository repository, 
+								RestTemplate restTemplate, 
+								HttpServletRequest request) {
 
 		this.request = request;
 		this.restTemplate = restTemplate;
+		functionValidadeAuthorization = repository.findById("VALIDATE_AUTHORIZATION")
+				.orElseThrow(() -> new NullPointerException("VALIDATE_AUTHORIZATION not found on the base."));
 	}
 
 	
@@ -46,7 +49,7 @@ public class SessionComponent {
 	 * @return
 	 * @throws AuthorizationException
 	 */
-	public RequestUser requestUser () throws AuthorizationException {
+	public User myUser () throws AuthorizationException {
 		String authorization = request.getHeader("Authorization");
 		if (authorization == null || authorization.isEmpty()) {
 			throw new AuthorizationException("erro_authorization", "There isn't authorization in request %s");
@@ -59,11 +62,11 @@ public class SessionComponent {
 		
 		
 		try {
-			ResponseEntity<RequestUser> response = restTemplate.exchange(
-												authorizationValidate, 
+			ResponseEntity<User> response = restTemplate.exchange(
+												functionValidadeAuthorization.getUrl(), 
 												HttpMethod.GET,
 												headers,
-												RequestUser.class
+												User.class
 			);
 			
 			if (!HttpStatus.OK.equals(response.getStatusCode())) {

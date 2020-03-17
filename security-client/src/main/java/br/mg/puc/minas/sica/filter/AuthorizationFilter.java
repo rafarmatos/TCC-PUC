@@ -29,7 +29,7 @@ public class AuthorizationFilter implements Filter{
 		
 		try {
 			
-			authorizationComponent.requestUser();			
+			authorizationComponent.myUser();			
 			chain.doFilter(req, res);
 		
 		} catch (AuthorizationException e) {

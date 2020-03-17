@@ -7,6 +7,15 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
-    
-server:
-  port: 8081
+
+
+# Spring Security configuration
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 252890713656-6hkd4jl34l4qcm5cn022knbn3quru1be.apps.googleusercontent.com
+            client-secret: mt8s9jUW9qmFCcOzzRKtj57l
+     
