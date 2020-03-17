@@ -22,14 +22,18 @@ Como citado por <a href="https://www.brunobrito.net.br/oauth2/">Bruno Brito</a>,
 mvn clean install
 ```
 
-## Serviços
-- http://localhost:8080 <br />
+## Heroku
+- https://sica-security.herokuapp.com <br />
 Endereço de autenticação do usuário.  
 Será solicita permissão de acesso aos seus dados na conta do Google e posteriormente, a requisação será direcionada para a tela com as credencias do usuário.
 
 
-- http://localhost:8080/logout <br />
+- https://sica-security.herokuapp.com/_authorization/logout <br />
 Endereço para realizar o processo de logout com requisição do tipo POST
+
+
+- https://sica-security.herokuapp.com/_authorization/
+Endereço para validar o token de acesso recebido no processo de autenticação.
 
 
 
