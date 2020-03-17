@@ -1,9 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://ec2-52-23-14-156.compute-1.amazonaws.com:5432/dfhf7588u0gmab
-    username: snmcqwfimnffuo
-    password: 917351414f3b277a76b7ef87344a1721f764b9b06b6e4b1d585a92a16caf4bed
-
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
