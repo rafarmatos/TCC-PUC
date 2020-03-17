@@ -27,5 +27,5 @@ Agora, adicione esta dependência em seu pom.xml:
 </dependency>
 ```
 
-¨## Heroku
-Este serviço 
+## Heroku
+Este cliente já esta integrado com o heroku. As validações estão sendo processadas no endereço https://sica-security.herokuapp.com/
