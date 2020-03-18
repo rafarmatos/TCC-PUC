@@ -20,7 +20,7 @@ public class UserController {
 	@GetMapping
 	public ResponseEntity<?> me () {
 		try {
-			return ResponseEntity.ok(session.myUser());
+			return ResponseEntity.ok(session.requestUser());
 		} catch (AuthorizationException e) {
 			return ResponseEntity.badRequest().body(e.getKey());
 		}
