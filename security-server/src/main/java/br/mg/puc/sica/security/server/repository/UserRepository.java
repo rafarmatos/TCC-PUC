@@ -3,7 +3,7 @@ package br.mg.puc.sica.security.server.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.mg.puc.minas.sica.entities.User;
+import br.mg.puc.sica.security.server.entities.User;
 
 /**
  * <p>Repositorio de dados de um {@link User}.</p>

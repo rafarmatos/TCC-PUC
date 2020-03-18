@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.firewall.RequestRejectedException;
 import org.springframework.stereotype.Service;
 
-import br.mg.puc.minas.sica.entities.User;
+import br.mg.puc.sica.security.server.entities.User;
 import br.mg.puc.sica.security.server.repository.UserRepository;
 
 /**
