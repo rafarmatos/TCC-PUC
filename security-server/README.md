@@ -21,7 +21,11 @@ Como citado por <a href="https://www.brunobrito.net.br/oauth2/">Bruno Brito</a>,
 mvn clean install
 ```
 
-Agora, você ja pode iniciar a aplicação pelo endereço: http://localhost:8080
+Inicie a aplicação pelo seu ambiente de desenvolvimento ou através do comando:
+```
+java -jar security-serve.0.0.1.jar
+```
+A aplicação estará disponível no endereço: http://localhost:8080
 
 ## Heroku
 - https://sica-security.herokuapp.com <br />
