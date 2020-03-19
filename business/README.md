@@ -83,12 +83,12 @@ Vamos acessar a pasta do projeto que estamos construindo e executar o seguinte c
 mvn deploy:deploy-file -Durl=file:///PATH_PROJETO/repo/ -Dfile=PATH_MODULO_SEGURANCA/target/security-client-0.0.1.jar br.mg.puc.minas.sica -DartifactId=security-client -Dpackaging=jar -Dversion=0.0.1
 ```
 
-Ao executar o comando acima, você recebe uma mensagem semelhante a:
+Se você receber uma mensagem semelhante abaixo:
 ```
 No plugin found for prefix 'docker'
 ```
 
-Adicione ao seu pom a configuração abaixo:
+Adicione ao seu pom a configuração a seguir:
 
 ```
 <repositories>
@@ -164,4 +164,4 @@ Agora temos que adicionar o nosso repositorio local ao nosso pom
  ```   
  
  Na <a href="https://devcenter.heroku.com/articles/local-maven-dependencies#deploy-the-artifact-into-the-repo">documentação</a> fala que:
- - Ao usar o repositório de um submódulo, você precisará substituir a ${project.parent.baseDir} propriedade no <url> elemento
+ - Ao usar o repositório de um submódulo, você precisará substituir a <code>${project.parent.baseDir}</code> propriedade no <url> elemento
