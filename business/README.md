@@ -26,7 +26,7 @@ mvn clean install
 enviando no header um Authorization. Este authorization pode ser obtido em <a href="https://github.com/skyrafael/TCC-PUC/tree/master/security-server">security-server</a> 
 
 ## Adicionando o projeto de seguranca como uma dependencia
-Dentro do projeto que receberá o projeto de segurança como dependência, crie uma pasta com o nome <b>repo</b>. A estrutura ficará semelhante a:
+Dentro do projeto que receberá o módulo de segurança como dependência, crie a pasta <b>repo</b>. A estrutura ficará semelhante a:
 ```
 seu_projeto
 +- pom.xml
@@ -43,7 +43,7 @@ Adicione ao seu pom.xml o plugin abaixo:
 </plugin>
 ```
 
-Agora, adicione a extensão
+e a extensão
 
 ```
 <extension>
@@ -72,23 +72,22 @@ Seu pom.xml ficará semelhante a:
 </build>
 ```
 
-Agora dentro do projeto security-client.<br />
 Acesse a pasta do projeto security-client e execute o comando:
 ```
 mvn clean install
 ``` 
 
-Vamos acessar a pasta do projeto que estamos construindo e executar o seguinte comando:
+Vamos voltar para a pasta do projeto que estamos construindo e executar o seguinte comando:
 ```
 mvn deploy:deploy-file -Durl=file:///PATH_PROJETO/repo/ -Dfile=PATH_MODULO_SEGURANCA/target/security-client-0.0.1.jar br.mg.puc.minas.sica -DartifactId=security-client -Dpackaging=jar -Dversion=0.0.1
 ```
 
-Se você receber uma mensagem semelhante abaixo:
+Caso você receba uma mensagem semelhante a esta:
 ```
-No plugin found for prefix 'docker'
+No plugin found for prefix 'deploy'
 ```
 
-Adicione ao seu pom a configuração a seguir:
+Adicione ao seu pom.xml a seguinte configuração:
 
 ```
 <repositories>
@@ -154,7 +153,7 @@ seu_projeto
 	               +- ...
 ```        
 
-Agora temos que adicionar o nosso repositorio local ao nosso pom
+Agora temos que adicionar o repositorio local ao nosso pom.xml
 ```   
 <repository>
       <id>project.local</id>
@@ -165,3 +164,5 @@ Agora temos que adicionar o nosso repositorio local ao nosso pom
  
  Na <a href="https://devcenter.heroku.com/articles/local-maven-dependencies#deploy-the-artifact-into-the-repo">documentação</a> fala que:
  - Ao usar o repositório de um submódulo, você precisará substituir a <code>${project.parent.baseDir}</code> propriedade no <url> elemento
+ 
+ Na próxima vez em que você "subir" o projeto, a dependência será resolvida e o aplicativo será construído sem problemas.
