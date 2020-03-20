@@ -171,9 +171,9 @@ Agora temos que adicionar o repositorio local ao nosso pom.xml
  Esta aplicação de teste esta disponível no Heroku. Para fazer o teste da aplicação siga os passos a seguir:
  - obtenha um token de acesso em: https://sica-security.herokuapp.com/
  - faça uma requisição:
-	1 - endereço: https://sica-business.herokuapp.com/_user
-	2 - verbo GET
-	3 - authorization: valor recebido no passo anterior
+	1. Endereço: https://sica-business.herokuapp.com/_user
+	2. Verbo: GET
+	3. Authorization: valor recebido no passo anterior
  
  O resultado esperado para esta requisição é:
 ```   
