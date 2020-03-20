@@ -1,4 +1,4 @@
-# business
+# business - projeto exemplo
 
 Projeto responsável por manter as funcionalidades de negócio do sistema
 
@@ -171,9 +171,9 @@ Agora temos que adicionar o repositorio local ao nosso pom.xml
  Esta aplicação de teste esta disponível no Heroku. Para fazer o teste da aplicação siga os passos a seguir:
  - obtenha um token de acesso em: https://sica-security.herokuapp.com/
  - faça uma requisição:
- -- endereço https://sica-business.herokuapp.com/_user
- -- verbo GET
- -- authorization: valor recebido no passo anterior
+	1 - endereço: https://sica-business.herokuapp.com/_user
+	2 - verbo GET
+	3 - authorization: valor recebido no passo anterior
  
  O resultado esperado para esta requisição é:
 ```   
