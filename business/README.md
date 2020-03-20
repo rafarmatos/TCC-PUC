@@ -166,3 +166,25 @@ Agora temos que adicionar o repositorio local ao nosso pom.xml
  - Ao usar o repositório de um submódulo, você precisará substituir a <code>${project.parent.baseDir}</code> propriedade no <url> elemento
  
  Na próxima vez em que você "subir" o projeto, a dependência será resolvida e o aplicativo será construído sem problemas.
+ 
+ # Heroku
+ Esta aplicação de teste esta disponível no Heroku. Para fazer o teste da aplicação siga os passos a seguir:
+ - obtenha um token de acesso em: https://sica-security.herokuapp.com/
+ - faça uma requisição:
+ -- endereço https://sica-business.herokuapp.com/_user
+ -- verbo GET
+ -- authorization: valor recebido no passo anterior
+ 
+ O resultado esperado para esta requisição é:
+```   
+ {
+"email": "abcd@gmail.com",
+"name": "Name",
+"picture": "https://lh3.googleusercontent.com/a-/abcd",
+"authorization": "123456789"
+ ```   
+}
+   
+ 
+ 
+ 
