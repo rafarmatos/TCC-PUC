@@ -15,12 +15,17 @@ Como citado por <a href="https://www.brunobrito.net.br/oauth2/">Bruno Brito</a>,
 
 ## Executando o projeto
 - Faça o download do projeto
-- Faça o download da dependência <a href="https://github.com/skyrafael/TCC-PUC/tree/master/entities">entities</a>
 - Execute o comando abaixo dentro da basta do projeto:
 
 ```
 mvn clean install
 ```
+
+Inicie a aplicação pelo seu ambiente de desenvolvimento ou através do comando:
+```
+java -jar security-serve.0.0.1.jar
+```
+A aplicação estará disponível no endereço: http://localhost:8080
 
 ## Heroku
 - https://sica-security.herokuapp.com <br />
