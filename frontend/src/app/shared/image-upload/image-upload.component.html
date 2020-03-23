@@ -1,0 +1,15 @@
+<div *ngIf="!carregando" class="fileinput text-center" >
+    <div [ngClass]="{'img-circle':isRound}">
+        <img src={{state.imagePreviewUrl}} alt="..." />
+    </div>
+</div>
+
+<div *ngIf="carregando" class="fileinput text-center" >
+  <div class='uil-reload-css' style=''><div></div></div>
+</div>
+
+<div>
+  <button class="btn btn-outline-default btn-file btn-round" (click)="handleClick()" *ngIf="!this.state.imagePreviewUrl">Selecione a foto</button>
+  <button class="btn btn-outline-default btn-file btn-round" (click)="handleClick()" *ngIf="this.state.imagePreviewUrl">Alterar foto</button>
+</div>
+

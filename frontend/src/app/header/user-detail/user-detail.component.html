@@ -1,0 +1,24 @@
+<div  *ngIf="isLoggedIn(); else notLoggedIn">
+  <li class="nav-item dropdown" >
+    <a href="#paper-kit" class="nav-link navbar-brand" data-toggle="dropdown" width="30" height="30" aria-expanded="false">
+      <div class="profile-photo-small">
+        <img src="{{getMiniaturaPerfil()}}" alt="Circle Image" class="img-circle img-responsive img-no-padding">
+      </div>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+      <div class="dropdown-header"> {{user().dsUsuario}} </div>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" [routerLink]="['/administrativo/perfil']">Perfil</a>
+      <a class="dropdown-item" [routerLink]="['/alterar-senha']">Alterar Senha</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" [routerLink]="" (click)="logout()">Sair</a>
+    </ul>
+  </li>
+</div>
+
+<ng-template #notLoggedIn>
+  <a class="btn btn-outline-default btn-round" [routerLink]="['/login']" (click)="sidebarClose()">
+    Entrar
+  </a>
+
+</ng-template>
