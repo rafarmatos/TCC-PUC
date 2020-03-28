@@ -79,7 +79,7 @@ mvn clean install
 
 Vamos voltar para a pasta do projeto que estamos construindo e executar o seguinte comando:
 ```
-mvn deploy:deploy-file -Durl=file:///PATH_PROJETO/repo/ -Dfile=PATH_MODULO_SEGURANCA/target/security-client-0.0.1.jar br.mg.puc.minas.sica -DartifactId=security-client -Dpackaging=jar -Dversion=0.0.1
+mvn deploy:deploy-file -Durl=file:///PATH_PROJETO/repo/ -Dfile=PATH_MODULO_SEGURANCA/target/security-client-0.0.1.jar -DgroupId=br.mg.puc.minas.sica -DartifactId=security-client -Dpackaging=jar -Dversion=0.0.1
 ```
 
 Caso você receba uma mensagem semelhante a esta:
