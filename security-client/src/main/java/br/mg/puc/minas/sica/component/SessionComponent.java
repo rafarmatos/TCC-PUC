@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import br.mg.puc.minas.sica.entities.RequestUser;
 import br.mg.puc.minas.sica.exception.AuthorizationException;
@@ -47,9 +48,13 @@ public class SessionComponent {
 	 * @throws AuthorizationException
 	 */
 	public RequestUser requestUser () throws AuthorizationException {
+		if (RequestContextHolder.getRequestAttributes() == null) {
+			return null;
+		}
+		
 		String authorization = request.getHeader("Authorization");
 		if (authorization == null || authorization.isEmpty()) {
-			throw new AuthorizationException("erro_authorization", "There isn't authorization in request %s");
+			throw new AuthorizationException("erro_authorization", "There isn't authorization in request");
 		}
 		
 		
