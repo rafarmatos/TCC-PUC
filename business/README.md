@@ -81,7 +81,7 @@ Vamos voltar para a pasta do projeto que estamos construindo e executar o seguin
 ```
 mvn deploy:deploy-file -Durl=file:///PATH_PROJETO/repo/ -Dfile=PATH_MODULO_SEGURANCA/target/security-client-version.jar -DgroupId=br.mg.puc.minas.sica -DartifactId=security-client -Dpackaging=jar -Dversion=version
 ```
-Consulte a versão do  <a href="https://github.com/skyrafael/TCC-PUC/tree/master/security-client"> projeto security-client acessando o pom.xml </a>.
+Consulte a versão do  <a href="https://github.com/skyrafael/TCC-PUC/tree/master/security-client"> projeto security-client clicando aqui</a>.
 
 Caso você receba uma mensagem semelhante a esta:
 ```
@@ -163,9 +163,6 @@ Agora temos que adicionar o repositorio local ao nosso pom.xml
 </repository>       
  ```   
  
- Na <a href="https://devcenter.heroku.com/articles/local-maven-dependencies#deploy-the-artifact-into-the-repo">documentação</a> fala que:
- - Ao usar o repositório de um submódulo, você precisará substituir a <code>${project.parent.baseDir}</code> propriedade no <url> elemento
- 
 Adicione a dependencia do security-client ao pom.xml. Copie o trecho do código abaixo e adicione ao seu pom.xml:
  ``` 
 	<dependency>
@@ -174,7 +171,7 @@ Adicione a dependencia do security-client ao pom.xml. Copie o trecho do código 
 		<version>version</version>
 	</dependency>
 ``` 		
-Consulte a versão do  <a href="https://github.com/skyrafael/TCC-PUC/tree/master/security-client"> projeto security-client acessando o pom.xml </a>.
+Consulte a versão do  <a href="https://github.com/skyrafael/TCC-PUC/tree/master/security-client"> projeto security-client clicando aqui</a>.
 
 Uma dica importante é que você deve adicionar a classe principal do seu projeto a seguinte propriedade:
 
