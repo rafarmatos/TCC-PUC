@@ -165,6 +165,25 @@ Agora temos que adicionar o repositorio local ao nosso pom.xml
  Na <a href="https://devcenter.heroku.com/articles/local-maven-dependencies#deploy-the-artifact-into-the-repo">documentação</a> fala que:
  - Ao usar o repositório de um submódulo, você precisará substituir a <code>${project.parent.baseDir}</code> propriedade no <url> elemento
  
+ Agora, temos que adicionar a dependencia do security-client ao nosso pom.xml. Copie o trecho do código abaixo e adicione ao seu pom.xml:
+ ``` 
+	<dependency>
+		<groupId>br.mg.puc.minas.sica</groupId>
+		<artifactId>security-client</artifactId>
+		<version>0.0.2</version>
+	</dependency>
+``` 		
+
+Uma dica importante é que você deve adicionar a classe principal do seu projeto a seguinte propriedade:
+
+ ``` 
+@SpringBootApplication(scanBasePackages = {"br.mg.puc.minas.sica", 
+											"br.mg.exemplo"})
+ ``` 
+ 
+ onde o valor <b>br.mg.exemplo</b> é o pacote onde encontra-se a classe principal do seu projeto.
+ 
+ 
  Na próxima vez em que você "subir" o projeto, a dependência será resolvida e o aplicativo será construído sem problemas.
  
  # Heroku
