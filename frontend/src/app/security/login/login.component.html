@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div id="iniciopagina" class="page-header" style="/*background-image: url('./assets/img/home/fundo.principal.sem.texto.png'); background-position: bottom; */background-color: white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+            <form [formGroup]="loginForm">
+              <div class="card card-register">
+                <h3 class="card-title">Acesse sua conta</h3>
+
+                <div class="division">
+                  <div class="line"></div>
+                </div>
+
+                <form class="register-form" [formGroup]="loginForm">
+                  <app-input-container [showTip]="false">
+                    <input type="text" formControlName="email" class="form-control no-border" placeholder="Email">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                  </app-input-container>
+
+                  <app-input-container [showTip]="false">
+                    <input type="password" formControlName="password" class="form-control no-border" placeholder="Senha">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                  </app-input-container>
+
+                  <button class="btn btn-block btn-round" (click)="login()" [disabled]="loginForm.invalid" >ENTRAR</button>
+                </form>
+                <div class="login">
+                  <p>Não possui conta? <a [routerLink]="['/pre-cadastro']"> Cadastre-se</a>.</p>
+                  <p> <a [routerLink]="['/esqueci-senha']">Esqueceu sua senha?</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+</div>
+
+
+
+

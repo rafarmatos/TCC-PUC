@@ -1,0 +1,57 @@
+class ContaDisponibilidade {
+  idContaDisponibilidade: number
+  idConta: number
+  nrJanelaMinutos: number
+  fgSegunda: boolean
+  fgTerca: boolean
+  fgQuarta: boolean
+  fgQuinta: boolean
+  fgSexta: boolean
+  fgSabado: boolean
+  fgDomingo: boolean
+  hrSegundaManhaInicio: string
+  hrSegundaManhaFim: string
+  hrSegundaTardeInicio: string
+  hrSegundaTardeFim: string
+  hrSegundaNoiteInicio: string
+  hrSegundaNoiteFim: string
+  hrTercaManhaInicio: string
+  hrTercaManhaFim: string
+  hrTercaTardeInicio: string
+  hrTercaTardeFim: string
+  hrTercaNoiteInicio: string
+  hrTercaNoiteFim: string
+  hrQuartaManhaInicio: string
+  hrQuartaManhaFim: string
+  hrQuartaTardeInicio: string
+  hrQuartaTardeFim: string
+  hrQuartaNoiteInicio: string
+  hrQuartaNoiteFim: string
+  hrQuintaManhaInicio: string
+  hrQuintaManhaFim: string
+  hrQuintaTardeInicio: string
+  hrQuintaTardeFim: string
+  hrQuintaNoiteInicio: string
+  hrQuintaNoiteFim: string
+  hrSextaManhaInicio: string
+  hrSextaManhaFim: string
+  hrSextaTardeInicio: string
+  hrSextaTardeFim: string
+  hrSextaNoiteInicio: string
+  hrSextaNoiteFim: string
+  hrSabadoManhaInicio: string
+  hrSabadoManhaFim: string
+  hrSabadoTardeInicio: string
+  hrSabadoTardeFim: string
+  hrSabadoNoiteInicio: string
+  hrSabadoNoiteFim: string
+  hrDomingoManhaInicio: string
+  hrDomingoManhaFim: string
+  hrDomingoTardeInicio: string
+  hrDomingoTardeFim: string
+  hrDomingoNoiteInicio: string
+  hrDomingoNoiteFim: string
+}
+
+export {ContaDisponibilidade}
+
