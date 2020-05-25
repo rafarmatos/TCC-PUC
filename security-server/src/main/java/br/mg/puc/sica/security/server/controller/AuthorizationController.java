@@ -10,8 +10,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.mg.puc.sica.security.server.service.FunctionService;
 import br.mg.puc.sica.security.server.service.UserService;
 
 /**
@@ -30,7 +32,10 @@ public class AuthorizationController {
 	private HttpServletRequest request;
 	
 	@Autowired
-	private UserService service;
+	private UserService userService;
+	
+	@Autowired
+	private FunctionService functionService;
 	
 	/**
 	 * Funcionalidade que exibe os dados do usuário autenticado de acordo com os 
@@ -39,16 +44,34 @@ public class AuthorizationController {
 	 * @param principal
 	 * @return
 	 */
-	@GetMapping
+	@GetMapping(path = "/me")
 	public ResponseEntity<?> user(@AuthenticationPrincipal OAuth2User principal) {
 		
 		try {
 			
-			return ResponseEntity.ok().body(service.build(
+			return ResponseEntity.ok().body(userService.build(
 					principal, 
 					request
 				)
 			);
+		}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+		}
+	}
+	
+	
+	@GetMapping(path = "/allow")
+	public ResponseEntity<?> allow(@AuthenticationPrincipal OAuth2User principal, 
+								  @RequestParam(name = "url") String url) {
+		
+		try {
+	
+			return ResponseEntity.ok().body(functionService.allow(
+					principal, 
+					url
+				)
+			);
+			
 		}catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
 		}
@@ -65,7 +88,7 @@ public class AuthorizationController {
 	
 		try {
 			
-			return ResponseEntity.ok().body(service.register(
+			return ResponseEntity.ok().body(userService.register(
 					principal, 
 					request
 				)
