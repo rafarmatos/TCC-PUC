@@ -55,4 +55,10 @@ public class EventoService  {
       }
     }
   }
+
+  public void deleteEvento(Long idEvento) {
+    Evento evento = eventoRepository.findById(idEvento).get();
+
+    eventoRepository.delete(evento);
+  }
 }
