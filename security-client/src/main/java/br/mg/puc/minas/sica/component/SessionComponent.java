@@ -29,7 +29,7 @@ public class SessionComponent {
 	@Value("${authorization.url-validate:https://sica-security.herokuapp.com/_authorization/allow?url=%s}" )
 	private String urlValidatePermission;
 	
-	@Value("${authorization.url-validate:https://sica-security.herokuapp.com/_authorization}" )
+	@Value("${authorization.url-me:https://sica-security.herokuapp.com/_authorization/me}" )
 	private String urlValidadeAuthorization;
 	
 	
