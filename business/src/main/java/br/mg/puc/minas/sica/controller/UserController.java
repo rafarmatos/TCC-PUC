@@ -18,7 +18,7 @@ public class UserController {
 	@Autowired
 	private SessionComponent session;
 
-	@GetMapping
+	@GetMapping(headers = "Authorization", produces =  MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> me () {
 		try {
 			return ResponseEntity.ok(session.requestUser());
