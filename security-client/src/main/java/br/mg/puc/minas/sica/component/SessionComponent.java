@@ -26,8 +26,13 @@ public class SessionComponent {
 
 	private RestTemplate restTemplate;
 
+	@Value("${authorization.url-validate:https://sica-security.herokuapp.com/_authorization/allow?url=%s}" )
+	private String urlValidatePermission;
+	
 	@Value("${authorization.url-validate:https://sica-security.herokuapp.com/_authorization}" )
 	private String urlValidadeAuthorization;
+	
+	
 	
 	private static final String JSESSIONID = "JSESSIONID=%s";
 
@@ -40,6 +45,45 @@ public class SessionComponent {
 	}
 
 	
+	
+	/**
+	 * Funcionalidde que permite recuperar uma usuário de acordo com o valor do authorization
+	 * enviado pela requisição.
+	 * @return
+	 * @throws AuthorizationException
+	 */
+	public Boolean validate () throws AuthorizationException {
+		if (RequestContextHolder.getRequestAttributes() == null) {
+			return null;
+		}
+		
+		String authorization = request.getHeader("Authorization");
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.set("Cookie", String.format(JSESSIONID, authorization));		
+		HttpEntity<String> headers  = new HttpEntity<String>(httpHeaders);
+		
+		
+		try {
+			
+			ResponseEntity<Boolean> response = restTemplate.exchange(
+												String.format(urlValidatePermission, request.getServletPath()), 
+												HttpMethod.GET,
+												headers,
+												Boolean.class
+			);
+			
+			if (!HttpStatus.OK.equals(response.getStatusCode())) {
+				Logger.getGlobal().info( String.format("The authorization %s is invalid - %s", authorization, response.getStatusCode()));
+				throw new AuthorizationException("erro_authorization", String.format("The authorization %s is invalid.", authorization));
+
+			}
+			
+			return response.getBody();
+		}catch (RestClientException e) {
+			throw new AuthorizationException("erro_authorization", e.getLocalizedMessage());
+		}
+			
+	}
 	
 	/**
 	 * Funcionalidde que permite recuperar uma usuário de acordo com o valor do authorization
