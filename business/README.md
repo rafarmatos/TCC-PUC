@@ -22,7 +22,7 @@ mvn clean install
 
 ## Testando funcionalidade
 - Para verificar se o projeto esta funcionando, faça uma requisição para 
-<br /><a href="http://localhost:8081/_user">http://localhost:8081/_user</a> <br />
+<br /><a href="http://localhost:8081/_user">http://localhost:8090/_user</a> <br />
 enviando no header um Authorization. Este authorization pode ser obtido em <a href="https://github.com/skyrafael/TCC-PUC/tree/master/security-server">security-server</a> 
 
 ## Adicionando o projeto de seguranca como uma dependencia
