@@ -23,9 +23,10 @@ mvn clean install
 
 Inicie a aplicação pelo seu ambiente de desenvolvimento ou através do comando:
 ```
-java -jar security-serve.0.0.1.jar
+java -jar security-serve.versao_projeto.jar
 ```
-A aplicação estará disponível no endereço: http://localhost:8080
+
+A aplicação estará disponível localmente pelo endereço: http://localhost:8080
 
 ## Heroku
 - https://sica-security.herokuapp.com <br />
@@ -37,8 +38,9 @@ Será solicita permissão de acesso aos seus dados na conta do Google e posterio
 Endereço para realizar o processo de logout com requisição do tipo POST
 
 
-- https://sica-security.herokuapp.com/_authorization/
-Endereço para validar o token de acesso recebido no processo de autenticação.
+- https://sica-security.herokuapp.com/_authorization/me
+Endereço para retornar os dados do usuário autenticado. A requisição deve ser do tipo GET e enviar no header um cookie com o valor do authorization 
+recebido no processo de autenticação. O nome deste cookie é JSESSIONID.  
 
 
 

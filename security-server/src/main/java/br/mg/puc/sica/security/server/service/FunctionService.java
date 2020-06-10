@@ -1,7 +1,6 @@
 package br.mg.puc.sica.security.server.service;
 
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
