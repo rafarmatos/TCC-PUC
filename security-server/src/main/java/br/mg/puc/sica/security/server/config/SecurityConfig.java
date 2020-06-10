@@ -1,5 +1,6 @@
 package br.mg.puc.sica.security.server.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,22 +16,18 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
  */
 @Configuration
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private URLAllows urlsAllows;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {		
 		http
 			.authorizeRequests(a -> a
-				.antMatchers(
-						"/", 
-						"/_authorization/**",
-						"/error",
-						"/v2/api-docs", 
-						"/swagger-resources/configuration/ui", 
-						"/swagger-resources", 
-						"/swagger-resources/configuration/security", 
-						"/swagger-ui.html",
-						"/webjars/**").permitAll()
-				.anyRequest().authenticated()
+				.antMatchers(urlsAllows.getUrls())
+				.permitAll()
+				.anyRequest()
+				.authenticated()
 			)
 			.exceptionHandling(e -> e
 				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))

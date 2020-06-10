@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import br.mg.puc.sica.security.server.config.URLAllows;
 import br.mg.puc.sica.security.server.entities.Function;
 import br.mg.puc.sica.security.server.repository.FunctionRepository;
 
@@ -18,9 +19,13 @@ import br.mg.puc.sica.security.server.repository.FunctionRepository;
  */
 @Service
 public class FunctionService {
+
+	@Autowired
+	private URLAllows urlsAllows;
 	
 	@Autowired
 	private FunctionRepository repository;
+	
 	
 	private final static HashMap<String, Function> CACHE = new HashMap<String, Function>();
 	
@@ -70,39 +75,22 @@ public class FunctionService {
 		}
 		
 		
-		if (param.equals("csrf") || param.equals("/csrf") || param.equals("/") || param.contains("swagger") || param.contains("v2/api-docs")) {
-			return  Boolean.TRUE;
+		if (urlsAllows.isSwagger(param)) {
+			return true;
 		}
+	
 		
 		
 		/*
-		 * Todos os usuário são validos
+		 * Nesta POC todos os usuários autenticados serão consiserados válidos
 		 */
 		if (principal != null) {
 			return  Boolean.TRUE;
 		}
 
 		
-		/*
-		 * Serão somente cadastradas as funcionalidades abertas, as demais o usuário precisará estar logado
-		 */
-		String url = param.split("/")[param.split("/").length - 1];
-		Logger.getGlobal().info(String.format("===> Path que será consultada: %s", url));
-		Function function =  findByUrl(url);
 		
-		
-		
-		/*
-		 * Se a url estiver cadastrada, quer dizer que usuários nao autenticados podem acessar
-		 * Se a url for null, significa que os usuários devem ser autenticados
-		 */
-		if (function == null) {
-			throw new Exception("User not authorized.");
-			
-		}
-		
-		
-		return  Boolean.TRUE;
+		return  Boolean.FALSE;
 	}
 
 

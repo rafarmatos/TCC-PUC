@@ -1,11 +1,17 @@
 package br.mg.puc.sica.security.server.controller;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.mg.puc.sica.security.server.entities.User;
 import br.mg.puc.sica.security.server.service.FunctionService;
 import br.mg.puc.sica.security.server.service.UserService;
 
@@ -30,6 +37,9 @@ public class AuthorizationController {
 	
 	@Autowired
 	private HttpServletRequest request;
+	
+	@Autowired
+	private HttpServletResponse response;
 	
 	@Autowired
 	private UserService userService;
@@ -84,18 +94,27 @@ public class AuthorizationController {
 	 * @return
 	 */
 	@GetMapping(path = "/register")
-	public ResponseEntity<?> register (@AuthenticationPrincipal OAuth2User principal) {
+	public void register (@AuthenticationPrincipal OAuth2User principal) {
 	
 		try {
 			
-			return ResponseEntity.ok().body(userService.register(
+			final User user = userService.register(
 					principal, 
 					request
-				)
 			);
 			
+			response.sendRedirect("https://sica-frontend.herokuapp.com/login?authorization="+user.getAuthorization());
+			
 		}catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+			
+			try {
+				
+				Logger.getGlobal().log(Level.SEVERE, e.getLocalizedMessage(), e);
+				response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getLocalizedMessage());
+			
+			} catch (IOException e1) {
+				Logger.getGlobal().log(Level.SEVERE, e1.getLocalizedMessage(), e1);
+			}
 		}
 	}
 	
