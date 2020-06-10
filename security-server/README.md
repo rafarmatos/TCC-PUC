@@ -38,7 +38,7 @@ Será solicita permissão de acesso aos seus dados na conta do Google e posterio
 Endereço para realizar o processo de logout com requisição do tipo POST
 
 
-- https://sica-security.herokuapp.com/_authorization/me
+- https://sica-security.herokuapp.com/_authorization/me  <br />
 Endereço para retornar os dados do usuário autenticado. A requisição deve ser do tipo GET e enviar no header um cookie com o valor do authorization 
 recebido no processo de autenticação. O nome deste cookie é JSESSIONID.  
 
