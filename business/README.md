@@ -1,6 +1,6 @@
-# business - projeto exemplo
+# business
 
-Projeto responsável por manter as funcionalidades de negócio do sistema
+Projeto responsável por manter dados dos usuários.
 
 
 ## Executando o projeto
