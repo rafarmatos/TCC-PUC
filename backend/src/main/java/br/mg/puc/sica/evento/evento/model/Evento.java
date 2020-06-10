@@ -28,7 +28,7 @@ public class Evento {
 
   private String data;
 
-  private String sensor;
+  private Long sensor;
 
   private Integer intensidade;
 
